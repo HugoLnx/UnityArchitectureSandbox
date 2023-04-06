@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ArchitectureSandbox
 {
     [RequireComponent(typeof(DirectionableComponent))]
-    public class Player : MonoBehaviour
+    public class PlayerSimple : MonoBehaviour
     {
         private DirectionableComponent _directionable;
 
