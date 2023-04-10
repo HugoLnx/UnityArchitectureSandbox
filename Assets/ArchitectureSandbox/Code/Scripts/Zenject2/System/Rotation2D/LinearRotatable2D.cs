@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace ArchitectureSandbox.Zen2
 {
-    public class LinearRotatable2D : IRotatable2DInternal
+    public class LinearRotatable2D : IRotatable2DWithCallbacks
     {
-        private readonly Directionable2D _directionable;
+        private readonly Directionable2DComponent _directionable;
         private readonly float _speed;
         private RotationState _state;
         private float OrientationModifier => _state switch
@@ -16,7 +16,7 @@ namespace ArchitectureSandbox.Zen2
             _ => 0,
         };
 
-        public LinearRotatable2D(Directionable2D directionable, float speed)
+        public LinearRotatable2D(Directionable2DComponent directionable, float speed)
         {
             _directionable = directionable;
             _speed = speed;

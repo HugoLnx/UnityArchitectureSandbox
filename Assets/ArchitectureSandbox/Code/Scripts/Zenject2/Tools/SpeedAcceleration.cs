@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 namespace ArchitectureSandbox.Zen2
 {
     public class SpeedAcceleration
@@ -34,22 +31,22 @@ namespace ArchitectureSandbox.Zen2
 
         private void AccelerateSpeed(float deltaTime, bool forward)
         {
-            float accelerationSign = forward ? -1f : 1f;
+            float accelerationSign = forward ? 1f : -1f;
             bool isAcceleratingInOpositeDirection =
-                Speed != 0 && accelerationSign != Mathf.Sign(Speed);
+                Speed != 0 && accelerationSign != Sign(Speed);
             if (isAcceleratingInOpositeDirection)
             {
                 deltaTime = DeaccelerateSpeed(deltaTime, increment: _acceleration);
             }
             Speed += _acceleration * accelerationSign * deltaTime;
-            Speed = Mathf.Clamp(Speed, -_maxSpeed, _maxSpeed);
+            Speed = Clamp(Speed, -_maxSpeed, _maxSpeed);
         }
 
         private float DeaccelerateSpeed(float deltaTime, float increment=0f)
         {
             float deacceleration = _deacceleration + increment;
             float step = deacceleration * deltaTime;
-            float speedSign = Mathf.Sign(Speed);
+            float speedSign = Sign(Speed);
             float unusedTime = 0;
             if (step >= Speed*speedSign)
             {
@@ -61,6 +58,20 @@ namespace ArchitectureSandbox.Zen2
                 Speed -= speedSign * step;
             }
             return unusedTime;
+        }
+
+        private float Clamp(float val, float min, float max)
+        {
+            if (val <= min) return min;
+            if (val >= max) return max;
+            return val;
+        }
+
+        private float Sign(float val)
+        {
+            if (val > 0) return 1f;
+            if (val < 0) return -1f;
+            return 0;
         }
     }
 }

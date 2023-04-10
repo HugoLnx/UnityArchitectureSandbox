@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace ArchitectureSandbox.Zen2
 {
-    public class Directionable2D : MonoBehaviour
+    public class Directionable2DComponent : MonoBehaviour
     {
+        private Transform _transform;
+
         public Vector2 Direction {
-            get => ToXZ(transform.forward);
-            set => transform.forward = ToX0Y(value);
+            get => ToXZ(_transform.forward);
+            set => _transform.forward = ToX0Y(value);
+        }
+
+        [Inject]
+        public void Construct(Transform transform)
+        {
+            _transform = transform;
         }
 
         public void RotateBy(float angle)

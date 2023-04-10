@@ -9,7 +9,7 @@ namespace ArchitectureSandbox.Zen2
     {
         void SwitchTo(RotationState state);
     }
-    public interface IRotatable2DInternal : IRotatable2D
+    public interface IRotatable2DWithCallbacks : IRotatable2D
     {
         void Tick(float deltaTime);
     }

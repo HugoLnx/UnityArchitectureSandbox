@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Zenject;
 
 namespace ArchitectureSandbox.Zen2
@@ -8,16 +9,19 @@ namespace ArchitectureSandbox.Zen2
     public class LinearRotatable2DBehaviour : MonoBehaviour, IRotatable2DBehaviour
     {
         [SerializeField] private float _speed;
-        private IRotatable2DInternal _rotatable;
+        private IRotatable2DWithCallbacks _rotatable;
         public IRotatable2D Rotatable => _rotatable;
 
         [Inject]
-        public void Construct(
-            [Inject(Id = "FromAncestor")]
-            Directionable2D directionable,
-            IRotatable2DInternal rotatable = null)
+        public void ConstructFromInjected(Directionable2DComponent directionable)
         {
-            _rotatable = rotatable ?? new LinearRotatable2D(directionable, _speed);
+            Construct(new LinearRotatable2D(directionable, _speed));
+        }
+
+        public void Construct(IRotatable2DWithCallbacks rotatable)
+        {
+            Assert.IsNotNull(rotatable);
+            _rotatable = rotatable;
         }
 
         private void Update()
