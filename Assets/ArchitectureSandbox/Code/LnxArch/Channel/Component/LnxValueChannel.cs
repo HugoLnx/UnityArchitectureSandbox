@@ -14,6 +14,7 @@ namespace LnxArch
             get => Read();
             set => Write(value);
         }
+
         public T Read()
         {
             return _value;

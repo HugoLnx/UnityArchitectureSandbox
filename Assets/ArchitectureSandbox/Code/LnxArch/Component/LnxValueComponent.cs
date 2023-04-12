@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace LnxArch
 {
-    public abstract class LnxValueComponent<T> : LnxValueComponentLightweight<T>, ILnxValueComponent<T>
+    public abstract class LnxValueComponentBase<T> : LnxValueComponentLightweight<T>, ILnxValueComponent<T>
     {
         public event ChangeCallback<T> OnChange;
         public event WriteCallback<T> OnWrite;
         private System.Func<T> ReadOverwrite;
+
         protected virtual T PlainValue {
             get => _value;
             set => _value = value;
@@ -61,6 +63,34 @@ namespace LnxArch
         private static bool IsEquals<K>(K v1, K v2)
         {
             return EqualityComparer<K>.Default.Equals(v1, v2);
+        }
+    }
+
+    public abstract class LnxValueComponent<T> : LnxValueComponentBase<T>
+    {
+        [SerializeField] private LnxValueChannel<T> _channel;
+        [SerializeField] private bool _disconnectChannelOnDisable;
+        private LnxValueChannelConnection<T> _channelConnection;
+
+        private void Awake()
+        {
+            if (_channel != null)
+            {
+                _channelConnection = new LnxValueChannelConnection<T>(this, _channel);
+            }
+        }
+
+        private void OnEnable()
+        {
+            _channelConnection?.Connect();
+        }
+
+        private void OnDisable()
+        {
+            if (_disconnectChannelOnDisable)
+            {
+                _channelConnection?.Disconnect();
+            }
         }
     }
 }
