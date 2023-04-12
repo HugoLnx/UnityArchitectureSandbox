@@ -350,7 +350,6 @@ GameObject:
   - component: {fileID: 363395525}
   - component: {fileID: 363395528}
   - component: {fileID: 363395527}
-  - component: {fileID: 363395526}
   m_Layer: 0
   m_Name: Direction2D
   m_TagString: Untagged
@@ -373,21 +372,6 @@ Transform:
   m_Father: {fileID: 1687166298913583565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363395526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363395524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0dcab590bc11642ba9810e4f7ad75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _channel: {fileID: 11400000, guid: a910f14e9caff2241ac44e50fe0a1b9e, type: 2}
-  _component: {fileID: 0}
-  _onlySyncWhenEnabled: 0
 --- !u!114 &363395527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78dcaaca2742079419bc92cc237e7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _channel: {fileID: 11400000, guid: a910f14e9caff2241ac44e50fe0a1b9e, type: 2}
+  _disconnectChannelOnDisable: 0
 --- !u!1 &379178634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,21 +1452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78dcaaca2742079419bc92cc237e7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1727774476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727774474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0dcab590bc11642ba9810e4f7ad75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _channel: {fileID: 11400000, guid: a910f14e9caff2241ac44e50fe0a1b9e, type: 2}
-  _component: {fileID: 0}
-  _onlySyncWhenEnabled: 0
+  _disconnectChannelOnDisable: 0
 --- !u!1 &1772854631
 GameObject:
   m_ObjectHideFlags: 0

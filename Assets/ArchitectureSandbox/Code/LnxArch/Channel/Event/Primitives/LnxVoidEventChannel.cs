@@ -1,15 +1,9 @@
 using UnityEngine;
 
-
 namespace LnxArch
 {
-    [CreateAssetMenu(menuName = "LnxArch/EventChannel/LnxVoidEventChannel", fileName = "VoidEventChannel")]
+    [CreateAssetMenu(menuName = "LnxArch/EventChannel/Void", fileName = "VoidEventChannel")]
     public class LnxVoidEventChannel : LnxEventChannel<object>
-    {
-    }
-
-    [CreateAssetMenu(menuName = "LnxArch/EventChannel/LnxBoolEventChannel", fileName = "BoolEventChannel")]
-    public class LnxBoolEventChannel : LnxEventChannel<bool>
     {
     }
 }

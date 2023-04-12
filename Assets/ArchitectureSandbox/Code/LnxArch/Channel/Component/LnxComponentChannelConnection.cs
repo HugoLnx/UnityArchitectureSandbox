@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace LnxArch
 {
-    public class LnxValueChannelConnection<T>
+    public class LnxComponentChannelConnection<T>
     {
-        private readonly LnxValueChannel<T> _channel;
-        private readonly LnxValueComponent<T> _component;
+        private readonly LnxComponentChannel<T> _channel;
+        private readonly LnxComponent<T> _component;
         private bool _isConnected;
 
-        public LnxValueChannelConnection(LnxValueComponent<T> component, LnxValueChannel<T> channel)
+        public LnxComponentChannelConnection(LnxComponent<T> component, LnxComponentChannel<T> channel)
         {
             _channel = channel;
             _component = component;
@@ -30,12 +30,12 @@ namespace LnxArch
             _isConnected = false;
         }
 
-        private void OnChannelWrite(T value, LnxValueSource<T> source)
+        private void OnChannelWrite(T value, LnxComponentSource<T> source)
         {
             _component.Write(value, source);
         }
 
-        private void OnComponentWrite(T value, LnxValueSource<T> source)
+        private void OnComponentWrite(T value, LnxComponentSource<T> source)
         {
             _channel.Write(value, source);
         }

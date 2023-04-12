@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [CreateAssetMenu(menuName = "LnxArch/LnxValueChannel", fileName = "new #SCRIPTNAME#")]
 namespace LnxArch
 {
-    public abstract class LnxValueChannel<T> : ScriptableObject, ILnxValueComponent<T>
+    public abstract class LnxComponentChannel<T> : ScriptableObject, ILnxComponent<T>
     {
         public event ChangeCallback<T> OnChange;
         public event WriteCallback<T> OnWrite;
@@ -20,7 +19,7 @@ namespace LnxArch
             return _value;
         }
 
-        public void Write(T value, LnxValueSource<T> source = default, bool skipCallbacks = false)
+        public void Write(T value, LnxComponentSource<T> source = default, bool skipCallbacks = false)
         {
             if (source.Channel == this) return;
             source.Channel = this;

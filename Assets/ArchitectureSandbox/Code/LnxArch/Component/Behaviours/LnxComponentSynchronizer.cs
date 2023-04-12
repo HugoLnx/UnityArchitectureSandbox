@@ -2,11 +2,8 @@ using UnityEngine;
 
 namespace LnxArch
 {
-    // public abstract class LnxValueComponentSynchronizer<T> : LnxValueComponentSynchronizer<T, LnxValueComponent<T>>
-    // {};
-
-    public abstract class LnxValueComponentSynchronizer<T, K> : LnxBehaviour
-    where K : LnxValueComponent<T>
+    public abstract class LnxComponentSynchronizer<T, K> : LnxBehaviour
+    where K : LnxComponent<T>
     {
         [SerializeField] private K _component;
         [SerializeField] private bool _writeOnUpdate = true;

@@ -5,6 +5,6 @@ using UnityEngine;
 
 namespace ArchitectureSandbox.LnxArchSandbox
 {
-    public class Direction2DComponent : LnxValueComponent<Vector2>
+    public class Direction2DComponent : LnxComponent<Vector2>
     {}
 }

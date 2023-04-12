@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LnxArch
 {
-    public abstract class LnxValueComponentBase<T> : LnxValueComponentLightweight<T>, ILnxValueComponent<T>
+    public abstract class LnxComponentBase<T> : LnxComponentLightweight<T>, ILnxComponent<T>
     {
         public event ChangeCallback<T> OnChange;
         public event WriteCallback<T> OnWrite;
@@ -25,7 +25,7 @@ namespace LnxArch
             return ReadOverwrite == null ? PlainValue : ReadOverwrite();
         }
 
-        public void Write(T value, LnxValueSource<T> source = default, bool skipCallbacks = false)
+        public void Write(T value, LnxComponentSource<T> source = default, bool skipCallbacks = false)
         {
             if (source.Component == this) return;
             T oldValue = PlainValue;
@@ -48,13 +48,13 @@ namespace LnxArch
             ReadOverwrite = read;
         }
 
-        protected void EmitChange(T oldValue, T newValue, LnxValueSource<T> source = default)
+        protected void EmitChange(T oldValue, T newValue, LnxComponentSource<T> source = default)
         {
             source.Component = this;
             OnChange?.Invoke(oldValue, newValue, source);
         }
 
-        protected void EmitWrite(T value, LnxValueSource<T> source = default)
+        protected void EmitWrite(T value, LnxComponentSource<T> source = default)
         {
             source.Component = this;
             OnWrite?.Invoke(value, source);
@@ -66,17 +66,17 @@ namespace LnxArch
         }
     }
 
-    public abstract class LnxValueComponent<T> : LnxValueComponentBase<T>
+    public abstract class LnxComponent<T> : LnxComponentBase<T>
     {
-        [SerializeField] private LnxValueChannel<T> _channel;
+        [SerializeField] private LnxComponentChannel<T> _channel;
         [SerializeField] private bool _disconnectChannelOnDisable;
-        private LnxValueChannelConnection<T> _channelConnection;
+        private LnxComponentChannelConnection<T> _channelConnection;
 
         private void Awake()
         {
             if (_channel != null)
             {
-                _channelConnection = new LnxValueChannelConnection<T>(this, _channel);
+                _channelConnection = new LnxComponentChannelConnection<T>(this, _channel);
             }
         }
 

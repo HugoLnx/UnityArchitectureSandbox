@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ArchitectureSandbox.LnxArchSandbox
 {
-    public class Direction2DTransformSynchronizer : LnxValueComponentSynchronizer<Vector2, Direction2DComponent>
+    public class Direction2DTransformSynchronizer : LnxComponentSynchronizer<Vector2, Direction2DComponent>
     {
         private Transform Transform => _entity.transform;
 

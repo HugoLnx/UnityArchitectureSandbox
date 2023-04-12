@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace LnxArch
 {
-    public abstract class LnxValueComponentLightweight<T> : LnxBehaviour, ILnxValueComponentLightweight<T>
+    public abstract class LnxComponentLightweight<T> : LnxBehaviour, ILnxComponentLightweight<T>
     {
         protected T _value;
         public virtual T Value {

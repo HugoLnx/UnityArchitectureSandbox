@@ -1,6 +1,6 @@
 namespace LnxArch
 {
-    public interface ILnxValueComponentLightweight<T>
+    public interface ILnxComponentLightweight<T>
     {
         T Value { get; set; }
     }
