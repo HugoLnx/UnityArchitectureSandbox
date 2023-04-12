@@ -97,13 +97,14 @@ namespace LnxArch
 
         private static MethodInfo GetConstructorMethodOn(Type type)
         {
-            return type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+            return type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)// | BindingFlags.FlattenHierarchy)
             .Where(m => m.GetCustomAttribute<AutoFetchAttribute>(false) != null)
             .FirstOrDefault();
         }
 
         private static HashSet<Type> GetParameterTypesOn(MethodInfo method)
         {
+            if (method == null) return new();
             return method.GetParameters()
             .Select(param => param.ParameterType)
             .ToHashSet();
