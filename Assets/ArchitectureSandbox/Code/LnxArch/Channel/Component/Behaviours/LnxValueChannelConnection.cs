@@ -48,12 +48,12 @@ namespace LnxArch
             _linkIsSet = false;
         }
 
-        private void OnChannelWrite(T value, LnxComponentCallbackSource<T> source)
+        private void OnChannelWrite(T value, LnxValueSource<T> source)
         {
             _component.Write(value, source);
         }
 
-        private void OnComponentWrite(T value, LnxComponentCallbackSource<T> source)
+        private void OnComponentWrite(T value, LnxValueSource<T> source)
         {
             _channel.Write(value, source);
         }

@@ -19,7 +19,7 @@ namespace LnxArch
             return _value;
         }
 
-        public void Write(T value, LnxComponentCallbackSource<T> source = default, bool skipCallbacks = false)
+        public void Write(T value, LnxValueSource<T> source = default, bool skipCallbacks = false)
         {
             if (source.Channel == this) return;
             source.Channel = this;

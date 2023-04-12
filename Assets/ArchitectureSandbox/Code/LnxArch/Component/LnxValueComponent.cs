@@ -23,7 +23,7 @@ namespace LnxArch
             return ReadOverwrite == null ? PlainValue : ReadOverwrite();
         }
 
-        public void Write(T value, LnxComponentCallbackSource<T> source = default, bool skipCallbacks = false)
+        public void Write(T value, LnxValueSource<T> source = default, bool skipCallbacks = false)
         {
             if (source.Component == this) return;
             T oldValue = PlainValue;
@@ -46,13 +46,13 @@ namespace LnxArch
             ReadOverwrite = read;
         }
 
-        protected void EmitChange(T oldValue, T newValue, LnxComponentCallbackSource<T> source = default)
+        protected void EmitChange(T oldValue, T newValue, LnxValueSource<T> source = default)
         {
             source.Component = this;
             OnChange?.Invoke(oldValue, newValue, source);
         }
 
-        protected void EmitWrite(T value, LnxComponentCallbackSource<T> source = default)
+        protected void EmitWrite(T value, LnxValueSource<T> source = default)
         {
             source.Component = this;
             OnWrite?.Invoke(value, source);
