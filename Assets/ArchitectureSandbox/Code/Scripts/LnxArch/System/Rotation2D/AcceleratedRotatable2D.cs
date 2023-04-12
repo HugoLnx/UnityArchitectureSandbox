@@ -4,24 +4,24 @@ namespace ArchitectureSandbox.LnxArchSandbox
 {
     public class AcceleratedRotatable2D : IRotatable2DWithCallbacks
     {
-        private readonly Directionable2DComponent _directionable;
+        private readonly Direction2DComponent _direction;
         private readonly SpeedAcceleration _acceleratedSpeed;
         private RotationState _state;
 
-        public AcceleratedRotatable2D(Directionable2DComponent directionable, SpeedAcceleration acceleratedSpeed)
+        public AcceleratedRotatable2D(Direction2DComponent direction, SpeedAcceleration acceleratedSpeed)
         {
-            _directionable = directionable;
+            _direction = direction;
             _acceleratedSpeed = acceleratedSpeed;
         }
 
         public static AcceleratedRotatable2D Create(
-            Directionable2DComponent directionable,
+            Direction2DComponent direction,
             float acceleration,
             float deacceleration,
             float maxSpeed)
         {
             return new AcceleratedRotatable2D(
-                directionable,
+                direction,
                 acceleratedSpeed: new(acceleration, deacceleration, maxSpeed));
         }
 
@@ -53,7 +53,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
 
         private void ApplySpeed(float deltaTime)
         {
-            _directionable.RotateBy(_acceleratedSpeed.Speed * deltaTime);
+            _direction.Value = Math2D.Rotate(_direction.Value, byDegrees: _acceleratedSpeed.Speed * deltaTime);
         }
     }
 }

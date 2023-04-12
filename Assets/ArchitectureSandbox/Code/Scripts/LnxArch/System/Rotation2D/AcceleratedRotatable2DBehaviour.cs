@@ -1,10 +1,10 @@
+using LnxArch;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Zenject;
 
 namespace ArchitectureSandbox.LnxArchSandbox
 {
-    public class AcceleratedRotatable2DBehaviour : MonoBehaviour, IRotatable2DBehaviour
+    public class AcceleratedRotatable2DBehaviour : LnxBehaviour, IRotatable2DBehaviour
     {
         [SerializeField] private float _acceleration;
         [SerializeField] private float _deacceleration;
@@ -12,18 +12,10 @@ namespace ArchitectureSandbox.LnxArchSandbox
         private IRotatable2DWithCallbacks _rotatable;
         public IRotatable2D Rotatable => _rotatable;
 
-        [Inject]
-        public void ConstructFromInjected(Directionable2DComponent directionable)
+        [AutoFetch]
+        public void Prepare(Direction2DComponent direction)
         {
-            Debug.Log($"AcceleratedConstructFromInjected {directionable}");
-            Construct(AcceleratedRotatable2D.Create(directionable, _acceleration, _deacceleration, _maxSpeed));
-        }
-
-        public void Construct(IRotatable2DWithCallbacks rotatable)
-        {
-            Debug.Log($"AcceleratedConstruct {rotatable}");
-            Assert.IsNotNull(rotatable);
-            _rotatable = rotatable;
+            _rotatable = AcceleratedRotatable2D.Create(direction, _acceleration, _deacceleration, _maxSpeed);
         }
 
         private void Update()

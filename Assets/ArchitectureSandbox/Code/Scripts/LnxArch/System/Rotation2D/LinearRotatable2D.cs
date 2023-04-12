@@ -6,7 +6,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
 {
     public class LinearRotatable2D : IRotatable2DWithCallbacks
     {
-        private readonly Directionable2DComponent _directionable;
+        private readonly Direction2DComponent _direction;
         private readonly float _speed;
         private RotationState _state;
         private float OrientationModifier => _state switch
@@ -16,16 +16,16 @@ namespace ArchitectureSandbox.LnxArchSandbox
             _ => 0,
         };
 
-        public LinearRotatable2D(Directionable2DComponent directionable, float speed)
+        public LinearRotatable2D(Direction2DComponent direction, float speed)
         {
-            _directionable = directionable;
+            _direction = direction;
             _speed = speed;
         }
 
         public void Tick(float deltaTime)
         {
             if (_state == RotationState.NoPushing) return;
-            _directionable.RotateBy(_speed * deltaTime * OrientationModifier);
+            _direction.Value = Math2D.Rotate(_direction.Value, byDegrees: _speed * deltaTime * OrientationModifier);
         }
 
         public void SwitchTo(RotationState state)
