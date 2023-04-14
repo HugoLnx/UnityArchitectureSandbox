@@ -27,7 +27,7 @@ namespace LnxArch
 
         public void Write(T value, LnxComponentSource<T> source = default, bool skipCallbacks = false)
         {
-            if (source.Component == this) return;
+            if ((object) source.Component == this) return;
             T oldValue = PlainValue;
             PlainValue = value;
 

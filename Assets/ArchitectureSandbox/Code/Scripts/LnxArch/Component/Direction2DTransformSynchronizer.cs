@@ -5,7 +5,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
 {
     public class Direction2DTransformSynchronizer : LnxComponentSynchronizer<Vector2, Direction2DComponent>
     {
-        private Transform Transform => _entity.transform;
+        private Transform Transform => Entity.transform;
 
         protected override Vector2 Pull()
         {

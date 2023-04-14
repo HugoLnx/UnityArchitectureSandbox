@@ -10,7 +10,7 @@ namespace LnxArch
 
         public void Emit(T args = default, LnxEventTriggerSource<T> source = default)
         {
-            if (source.Event == this) return;
+            if ((object) source.Event == this) return;
             source.Event = this;
             OnTrigger?.Invoke(args, source);
         }

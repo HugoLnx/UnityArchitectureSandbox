@@ -21,7 +21,7 @@ namespace LnxArch
 
         public void Write(T value, LnxComponentSource<T> source = default, bool skipCallbacks = false)
         {
-            if (source.Channel == this) return;
+            if ((object) source.Channel == this) return;
             source.Channel = this;
             T oldValue = _value;
             _value = value;

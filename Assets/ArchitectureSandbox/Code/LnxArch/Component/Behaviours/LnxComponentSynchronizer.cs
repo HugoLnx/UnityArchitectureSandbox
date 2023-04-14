@@ -15,7 +15,7 @@ namespace LnxArch
         private void Awake()
         {
             if (_component == null) _component = GetComponent<K>();
-            if (_component == null) _component = _entity.FetchFirst<K>();
+            if (_component == null) _component = Entity.FetchFirst<K>();
             _component.OnWrite += (value, _) => Push(value);
             _component.OverwriteReadingTo(Pull);
         }
