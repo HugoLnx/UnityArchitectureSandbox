@@ -13,7 +13,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
         private PlayerInput _input;
         private MonitoredValue<RotationState> _monitoredState;
 
-        [AutoFetch]
+        [Autofetch]
         private void Prepare(IRotatable2DBehaviour rotatableBehaviour)
         {
             _rotatable = rotatableBehaviour.Rotatable;

@@ -12,7 +12,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
         private IRotatable2DWithCallbacks _rotatable;
         public IRotatable2D Rotatable => _rotatable;
 
-        [AutoFetch]
+        [Autofetch]
         public void Prepare(Direction2DComponent direction)
         {
             _rotatable = AcceleratedRotatable2D.Create(direction, _acceleration, _deacceleration, _maxSpeed);

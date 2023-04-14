@@ -6,17 +6,13 @@ using UnityEngine;
 
 namespace LnxArch
 {
-    [AttributeUsage(AttributeTargets.Method)]
-    public sealed class AutoFetchAttribute : Attribute
-    {}
-
     public readonly struct AutofetchMethod
     {
         public MethodInfo Info { get; }
-        public AutoFetchAttribute AutofetchAttribute { get; }
+        public AutofetchAttribute AutofetchAttribute { get; }
         public AutofetchParameter[] Parameters { get; }
 
-        public AutofetchMethod(MethodInfo method, AutoFetchAttribute autofetchAttribute, AutofetchParameter[] parameters)
+        public AutofetchMethod(MethodInfo method, AutofetchAttribute autofetchAttribute, AutofetchParameter[] parameters)
         {
             Info = method;
             AutofetchAttribute = autofetchAttribute;
@@ -28,7 +24,7 @@ namespace LnxArch
             // TODO: Verify if method has generics and throw and exception if it does
             return new AutofetchMethod(
                 method: method,
-                autofetchAttribute: method.GetCustomAttribute<AutoFetchAttribute>(false),
+                autofetchAttribute: method.GetCustomAttribute<AutofetchAttribute>(false),
                 parameters: method.GetParameters().Select(AutofetchParameter.BuildFrom).ToArray()
             );
         }

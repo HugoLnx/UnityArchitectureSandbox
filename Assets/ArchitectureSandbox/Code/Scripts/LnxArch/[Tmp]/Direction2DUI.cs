@@ -13,7 +13,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
         private Direction2DComponent _direction;
 
 
-        [AutoFetch]
+        [Autofetch]
         private void Prepare(TMP_Text text, Direction2DComponent direction)
         {
             _text = text;

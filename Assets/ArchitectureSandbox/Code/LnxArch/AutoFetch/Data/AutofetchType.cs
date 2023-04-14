@@ -11,10 +11,10 @@ namespace LnxArch
         public static Type BaseType = typeof(MonoBehaviour);
         public Type Type { get; private set; }
         public AutofetchMethod[] AutofetchMethods { get; private set; }
-        public AutoFetchAttribute MainAttribute { get; private set; }
+        public AutofetchAttribute MainAttribute { get; private set; }
         public int Priority { get; set; }
 
-        public AutofetchType(Type type, AutofetchMethod[] autofetchMethods, AutoFetchAttribute mainAttribute)
+        public AutofetchType(Type type, AutofetchMethod[] autofetchMethods, AutofetchAttribute mainAttribute)
         {
             Type = type;
             AutofetchMethods = autofetchMethods;

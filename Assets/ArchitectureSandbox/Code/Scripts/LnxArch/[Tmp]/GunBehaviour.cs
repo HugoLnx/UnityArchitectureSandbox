@@ -8,7 +8,7 @@ namespace ArchitectureSandbox.LnxArchSandbox
 {
     public class GunBehaviour : LnxBehaviour
     {
-        [AutoFetch]
+        [Autofetch]
         private void Prepare(
             [FromParentEntity]
             PlayerLnxArchBehaviour player,
