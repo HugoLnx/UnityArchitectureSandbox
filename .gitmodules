@@ -1,0 +1,3 @@
+[submodule "Packages/UnityLnxArch"]
+	path = Packages/UnityLnxArch
+	url = https://github.com/HugoLnx/unity-lnx-arch.git

@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.sensengames.unity-lnx-arch": {
+      "version": "file:UnityLnxArch",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity-atoms.unity-atoms": {
       "version": "https://github.com/unity-atoms/unity-atoms.git#master",
       "depth": 0,
